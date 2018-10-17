@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display Page </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.6/css/select.dataTables.min.css">
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.6/js/dataTables.select.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <style type="text/css">
+            body
+            {
+                font-family: 'Roboto';
+                background: #efefef;
+                /*border: 3px solid black;
+                padding-bottom: 50px;*/
+            }
+            #btn
+            {
+                border-radius: 4px;
+            }
+            .toolbar
+            {
+                padding-top: 50px;
+                text-align: center;
+            }
+            #final_button1
+            {
+                margin-top: 30px;
+            }
+            #final_button2
+            {
+                margin-top: 30px;
+                /*visibility: hidden;*/
+                /*display: none;*/
+            }
+            #text
+            {
+                color: red;
+                display: none;
+            }
+            #selectedg
+            {
+                padding: 6px 12px;
+                font-size: 14px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            }
+            .selectc
+            {
+                text-align: center;
+            }
+            .displayCount
+            {
+                text-align: center;
+                font-size: 2rem;    
+            }
+            #tableheading
+            {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class = "container" style="border: 3px solid black; padding-bottom: 50px;">
+
+            <nav class="navbar navbar-default navbar-inverse">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a style="color: white;" class="navbar-brand" href="http://hrpayroll.vakrangee.in/">HRMS Spine <i class="fa fa-users"></i></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="http://hrpayroll.vakrangee.in/">Home <span class="sr-only">(current)</span></a></li>
+                            <li><a href="http://www.vakrangee.in/">About Us</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="http://www.vakrangee.in/bfsi-services.php">Our Services</a></li>
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="http://www.vakrangee.in/introduction.php">Franchisees and Partners</a></li>
+                            <li><a href="http://www.vakrangee.in/contact-us.php">Contact Us</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+
+            <div class="container"> 
+                <form id="form1">
+                    <div class="form-hoizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3"><label for="firstname">First Name:</label><input type="text" name="firstname" class="form-control" placeholder="First"></div>
+                            <div class="col-sm-3"><label for="lastname">Last Name:</label><input type="text" name="lastname" class="form-control" placeholder="Last"></div>
+                            <div class="col-sm-3"></div>
+                        </div>
+
+                        <br><br><br><br><br>
+
+                    </div>
+                    <div class="selectc form-group">
+                        <div class="col-sm-3"></div>
+                        <label for="selectedg" class="col-sm-2">Gender:</label>
+                        <select id="selectedg" name="gender" class="col-sm-2">
+                            <option value="other" selected>Select</option>  
+                            <option value="male">Male</option>  
+                            <option value="female">Female</option>  
+                        </select>
+                        <div class="col-sm-5"></div>
+
+                        <br><br><br>
+
+                        <button type="submit" onclick="showHead()" style="text-align: center;" class="btn-success" id="btn">Display!</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="tableheading"> 
+                <table id="table" class="display" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="select-checkbox"><input type="checkbox" name="chkbox"></th>
+                            <th>Employee ID</th>
+                            <th>Employee Number</th>
+                            <th>First Name</th>
+                            <th>Last Name</th> 
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>Marital Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle"><h3 class="displayCount"></h3></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 style="text-align: center;"><b>Select the following:</b></h5>
+                        <div style="padding-left: 200px;">
+                            <label class="checkbox inline no_indent">
+                                <input type="checkbox" id="email" name="email"> Email
+                            </label>
+                            <label class="checkbox inline no_indent">
+                                <input type="checkbox" id="sms" name="sms"> SMS
+                            </label>
+                            <label class="checkbox inline no_indent">
+                                <input type="checkbox" id="notification" name="notification"> Notification
+                            </label>
+                        </div>
+                        <h3 id="displaySelected"></h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="callServlet" onclick="sendData()" class="btn btn-primary">Save changes</button>
+                    </div>
+                    <!--     <form action="Email" method="POST">
+                                                <input type="text" name="ids" id="ids" value="" />
+                                        </form> -->
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            var count = 0;
+
+            // function sendServlet() {
+            //  $.post("Email", function(){
+            //      var dataT = $("#table").DataTable();
+            //      var dataSend = dataT.rows({selected: true}).data();
+            //      console.log("Data Sent :" + dataSend);
+            //  });
+            // }
+
+            // function sendServlet() {
+            //  var data = $("#table").DataTable().rows({selected: true}).data();
+            //  $.post("/Email", data);
+            //  console.log("Data:" + data);
+            // }
+
+            function sendData() {
+
+                var check = [];
+                check[0] = (document.getElementById('email').checked) ? "1" : "0";
+                check[1] = (document.getElementById('sms').checked) ? "1" : "0";
+                check[2] = (document.getElementById('notification').checked) ? "1" : "0";
+
+                var i;
+                var ids = [];
+                var num = [];
+                var emp = [];
+                var data = $("#table").DataTable().rows({selected: true}).data();
+                for (i = 0; i < data.length; i++) {
+                    var ids = ids + data[i]["Email ID"] + ",";
+                    var num = num + data[i]["Phone Number"] + ",";
+                    var emp = emp + data[i]["Employee Number"] + ",";
+                }
+                console.log(check);
+                console.log(ids);
+                console.log(num);
+                console.log(emp);
+
+                post("Email", {check: check, ids: ids, num: num, emp: emp}, "post");
+
+            }
+
+            function post(path, params, method) {
+                method = method || "post";
+                var form = document.createElement("form");
+                form.setAttribute("method", method);
+                form.setAttribute("action", path);
+                for (var key in params) {
+                    if (params.hasOwnProperty(key)) {
+                        console.log("Key:" + key + " Params:" + params[key]);
+                        var hiddenField = document.createElement("input");
+                        hiddenField.setAttribute("type", "hidden");
+                        hiddenField.setAttribute("name", key);
+                        hiddenField.setAttribute("value", params[key]);
+                        form.appendChild(hiddenField);
+                    }
+                }
+                document.body.appendChild(form);
+                form.submit();
+                console.log("form submitted");
+            }
+
+            function showHead() {
+                document.getElementById('tableheading').style.display = "block";
+            }
+
+            // function myfunc(sel) {
+            //     $(".displayCount").text('You selected: ' + sel + ' users!');
+            // }
+
+            // $("#final_button2").on("click", "#final_button1", function(e){
+            //  if(document.getElementById("final_check").checked == false) {
+            //      document.getElementById("text").style.display = "block";
+            //  }
+            //  else {
+            //      $("final_button2").trigger("click");
+            //  }
+            // });
+
+            function validate() {
+                if (document.getElementById("final_check").checked == false) {
+                    document.getElementById("text").style.display = "block";
+                } else if (document.getElementById("final_check").checked == true) {
+                    if (document.getElementById("text").style.display == "block") {
+                        document.getElementById("text").style.display = "none";
+                    }
+                    $("#exampleModalCenter").modal('show');
+                }
+            }
+
+            $(document).ready(function () {
+                $('#btn').click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var dataT = $('#table').DataTable({
+                        "dom": '<"top"lipf>rt<"bottom"ip><"toolbar"><"clear">',
+                        "bProcessing": true,
+                        "bDestroy": true,
+                        "dataSrc": "demo",
+                        "columnDefs": [{
+                                orderable: false,
+                                "className": 'select-checkbox',
+                                'checkboxes': {
+                                    'selectRow': true
+                                },
+                                targets: 0
+                            }],
+                        buttons: [
+                            //{
+                            // extend: 'selected',
+                            // text: 'Action',
+                            // action: function () {
+                            //     var myvar = dataT.rows('.selected').data().length;
+                            //     sel = myvar;
+                            //     alert(myvar+" user(s) selected!");
+                            //     $(".displayCount").text('You selected: '+sel+' users!');
+                            // }},
+                            {extend: 'selectAll',
+                                text: 'Select All'},
+                            {extend: 'selectNone',
+                                text: 'Cancel'}
+                        ],
+                        "select": {
+                            "style": 'multi',
+                            "selector": 'td:first-child'
+                        },
+                        "bDeferRender": true,
+                        "iDisplayLength": 100,
+                        "aoColumns": [
+                            {"mdata": null, render: function () {
+                                    return null;
+                                }},
+                            {"mData": "Employee ID", className: "Display"},
+                            {"mData": "Employee Number", className: "Display"},
+                            {"mData": "First Name", className: "Display"},
+                            {"mData": "Last Name", className: "Display"},
+                            {"mData": "Gender", className: "Display Gender"},
+                            {"mData": "Date of Birth", className: "Display"},
+                            {"mData": "Email ID", className: "Display"},
+                            {"mData": "Phone Number", className: "Display"},
+                            {"mData": "Address", className: "Display"},
+                            {"mData": "Marital Status", className: "Display"}
+                        ],
+                        //bServerSide: true,
+                        "sAjaxSource": "Display",
+                        "sServerMethod": "POST",
+                        initComplete: function () {
+                            //var selCt = dataT.rows('.selected').data().length;
+                            //sel = dataT.rows('.selected').data().length;
+                            $("div.toolbar").html('<form id="form2"> <div id="mydiv"> <input type="checkbox" id="final_check"> Confirm choice <br> <p id="text"> Please tick the above box </p> <button type="button" onclick="validate()" class="btn btn-success" id="final_button1">Proceed!</button> </div> </form>');
+                            // <button type="button" class="btn btn-success" id="final_button2" data-toggle="modal" data-target="#exampleModalCenter">Proceed!</button>
+                            // $(".displayCount").innerHTML('<h4 style="text-align:center;">You selected: '+sel+' users!</h4>');
+
+                        },
+                        "fnServerParams": function (aoData) {
+                            var gender = $('#selectedg').find('option:selected').val();
+                            aoData.push({"name": "gender", "value": gender});
+                        }
+                    }
+                    );
+                    dataT.on('select', function (e, dt, type, indexes) {
+                        var dataTableRows = dataT.rows({selected: true}).data().length;
+                        $(".displayCount").text('You selected: ' + dataTableRows + ' user(s)!');
+                        //console.log(dataTableRows);
+                        //count++;
+                        //myfunc(count);
+                    });
+                    dataT.on("click", "th.select-checkbox", function () {
+                        if ($("th.select-checkbox").hasClass("selected")) {
+                            dataT.rows().deselect();
+                            $("th.select-checkbox").removeClass("selected");
+                        } else {
+                            dataT.rows().select();
+                            $("th.select-checkbox").addClass("selected");
+                        }
+                    }).on("select deselect", function () {
+                        ("Some selection or deselection going on")
+                        if (dataT.rows({
+                            selected: true
+                        }).count() !== dataT.rows().count()) {
+                            $("th.select-checkbox").removeClass("selected");
+                        } else {
+                            $("th.select-checkbox").addClass("selected");
+                        }
+                    });
+                    // addeventlistener to the initComplete buttons and trigger modal!!
+                    //$('#table tbody').on( 'click', 'tr', function () {
+                    //  $(this).toggleClass('selected');
+                    //$(this).toggleClass('select-checkbox');
+                    //});
+                    // $('#gobtn').click( function () {
+                    //     alert(dataT.rows('.selected').data().length +' user(s) selected' );
+                    // });
+                    //dataT.destroy();
+                });
+
+            });
+
+        </script>
+
+    </body>
+</html>
