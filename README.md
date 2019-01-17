@@ -4,6 +4,6 @@ A web application which can send Emails, SMS and Android push notifications to a
 
 Software Requirements: Netbeans IDE 8.2, Java 8 EE, Microsoft SQL Server 2012, Any Text Editor
 
-Languages Used: HTML, JavaScript, CSS
+Languages Used: HTML, JavaScript, CSS, Java
 
 Frameworks Used: Bootstrap, DataTables, jQuery
