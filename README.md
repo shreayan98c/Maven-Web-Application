@@ -7,5 +7,3 @@ Software Requirements: Netbeans IDE 8.2, Java 8 EE, Microsoft SQL Server 2012, A
 Languages Used: HTML, JavaScript, CSS, Java
 
 Frameworks Used: Bootstrap, DataTables, jQuery
-
-![](https://drive.google.com/drive/u/0/folders/1Fg5fBr-p0J2hvPPERe1uqSop_qWdMR5J)
